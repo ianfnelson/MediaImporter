@@ -1,19 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using SystemWrapper.IO;
 
 namespace MediaImporter.Framework
 {
-    public class MediaProcessor
+    public class MediaProcessor : IMediaProcessor
     {
+        private readonly IConfigurationHelper _configurationHelper;
+        private readonly IDirectoryWrap _directoryWrap;
+        private readonly INotifier _notifier;
+        private readonly IFileHandler[] _fileHandlers;
+
+        public MediaProcessor(IConfigurationHelper configurationHelper, IDirectoryWrap directoryWrap, INotifier notifier, IEnumerable<IFileHandler> fileHandlers )
+        {
+            _configurationHelper = configurationHelper;
+            _directoryWrap = directoryWrap;
+            _notifier = notifier;
+            _fileHandlers = fileHandlers.OrderBy(x => x.Ordinality).ToArray();
+        }
+
         public void ImportFiles()
         {
-            throw new NotImplementedException();
+            var files = GetInputFiles();
+
+            foreach (var file in files)
+            {
+                _notifier.Notify(file);
+
+                var handler = _fileHandlers.First(x => x.CanHandleFile(file));
+                handler.HandleFile(file);
+            }
+                    
         }
 
         public virtual IEnumerable<string> GetInputFiles()
         {
-            throw new NotImplementedException();
+            foreach (var inputLocation in _configurationHelper.InputLocations)
+            {
+                if (_directoryWrap.Exists(inputLocation))
+                {
+                    foreach (var file in _directoryWrap.GetFiles(inputLocation, "*.*", SearchOption.AllDirectories))
+                    {
+                        yield return file;
+                    }
+                }
+            }
         }
     }
 }

@@ -43,6 +43,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="SystemWrapper">
+      <HintPath>..\MediaImporter\packages\SystemWrapper.0.4\lib\SystemWrapper.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
