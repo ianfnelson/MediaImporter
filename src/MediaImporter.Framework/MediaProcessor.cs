@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using SystemWrapper.IO;
 
 namespace MediaImporter.Framework
@@ -27,24 +27,22 @@ namespace MediaImporter.Framework
 
             foreach (var file in files)
             {
-                _notifier.Notify(file);
-
                 var handler = _fileHandlers.First(x => x.CanHandleFile(file));
                 handler.HandleFile(file);
             }
-                    
         }
 
         public virtual IEnumerable<string> GetInputFiles()
         {
             foreach (var inputLocation in _configurationHelper.InputLocations)
             {
-                if (_directoryWrap.Exists(inputLocation))
+                _notifier.Notify(inputLocation);
+
+                if (!_directoryWrap.Exists(inputLocation)) continue;
+                
+                foreach (var file in _directoryWrap.GetFiles(inputLocation, "*.*", SearchOption.AllDirectories))
                 {
-                    foreach (var file in _directoryWrap.GetFiles(inputLocation, "*.*", SearchOption.AllDirectories))
-                    {
-                        yield return file;
-                    }
+                    yield return file;
                 }
             }
         }

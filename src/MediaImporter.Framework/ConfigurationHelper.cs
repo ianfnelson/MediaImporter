@@ -9,6 +9,7 @@ namespace MediaImporter.Framework
         private IList<string> _imageExtensions;
         private IList<string> _videoExtensions;
         private IList<string> _ignoredExtensions;
+        private IList<string> _unknownFileOutputLocations;
 
         public IList<string> InputLocations
         {
@@ -54,6 +55,13 @@ namespace MediaImporter.Framework
 
         public IList<string> SecondaryVideoOutputLocations { get; private set; }
 
-        public string UnknownFileOutputLocation { get; private set; }
+        public IList<string> UnknownFileOutputLocations
+        {
+            get
+            {
+                return
+                    _unknownFileOutputLocations ?? (_unknownFileOutputLocations = ConfigurationManager.AppSettings["UnknownFileOutputLocations"].Split('|'));
+            }
+        }
     }
 }

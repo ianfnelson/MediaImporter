@@ -20,6 +20,6 @@ namespace MediaImporter.Framework
 
         IList<string> SecondaryVideoOutputLocations { get; }
 
-        string UnknownFileOutputLocation { get; }
+        IList<string> UnknownFileOutputLocations { get; }
     }
 }
