@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaImporter", "MediaImpor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaImporter.Framework", "..\MediaImporter.Framework\MediaImporter.Framework.csproj", "{4E1A58B7-E5F9-4238-82D1-C854B098B094}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaImporter.Framework.Tests", "MediaImporter.Framework.Tests\MediaImporter.Framework.Tests.csproj", "{B3AA64D8-9B78-4DA8-BF83-58E8BED9D728}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaImporter.Framework.Tests", "..\MediaImporter.Framework.Tests\MediaImporter.Framework.Tests.csproj", "{9139BA65-4A94-4EC6-8AD0-C2C702867DAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{4E1A58B7-E5F9-4238-82D1-C854B098B094}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E1A58B7-E5F9-4238-82D1-C854B098B094}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E1A58B7-E5F9-4238-82D1-C854B098B094}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B3AA64D8-9B78-4DA8-BF83-58E8BED9D728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B3AA64D8-9B78-4DA8-BF83-58E8BED9D728}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B3AA64D8-9B78-4DA8-BF83-58E8BED9D728}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B3AA64D8-9B78-4DA8-BF83-58E8BED9D728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9139BA65-4A94-4EC6-8AD0-C2C702867DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9139BA65-4A94-4EC6-8AD0-C2C702867DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9139BA65-4A94-4EC6-8AD0-C2C702867DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9139BA65-4A94-4EC6-8AD0-C2C702867DAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
