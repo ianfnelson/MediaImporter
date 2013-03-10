@@ -1,5 +1,4 @@
-﻿using System.IO;
-using SystemWrapper.IO;
+﻿using SystemWrapper.IO;
 
 namespace MediaImporter.Framework.FileHandlers
 {

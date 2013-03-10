@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using SystemWrapper.IO;
 
 namespace MediaImporter.Framework
@@ -30,6 +31,12 @@ namespace MediaImporter.Framework
                 var handler = _fileHandlers.First(x => x.CanHandleFile(file));
                 handler.HandleFile(file);
             }
+
+            //Parallel.ForEach(files, file =>
+            //    {
+            //        var handler = _fileHandlers.First(x => x.CanHandleFile(file));
+            //        handler.HandleFile(file);
+            //    });
         }
 
         public virtual IEnumerable<string> GetInputFiles()
