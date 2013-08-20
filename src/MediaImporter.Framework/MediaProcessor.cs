@@ -26,25 +26,19 @@ namespace MediaImporter.Framework
         {
             var files = GetInputFiles();
 
-            foreach (var file in files)
-            {
-                var handler = _fileHandlers.First(x => x.CanHandleFile(file));
-                handler.HandleFile(file);
-            }
+            Parallel.ForEach(files, file =>
+                {
+                    var handler = _fileHandlers.First(x => x.CanHandleFile(file));
+                    handler.HandleFile(file);
+                });
 
-            //Parallel.ForEach(files, file =>
-            //    {
-            //        var handler = _fileHandlers.First(x => x.CanHandleFile(file));
-            //        handler.HandleFile(file);
-            //    });
+            _notifier.Notify("Done.");
         }
 
         public virtual IEnumerable<string> GetInputFiles()
         {
             foreach (var inputLocation in _configurationHelper.InputLocations)
             {
-                _notifier.Notify(inputLocation);
-
                 if (!_directoryWrap.Exists(inputLocation)) continue;
                 
                 foreach (var file in _directoryWrap.GetFiles(inputLocation, "*.*", SearchOption.AllDirectories))
