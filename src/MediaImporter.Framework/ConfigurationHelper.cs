@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 
 namespace MediaImporter.Framework
@@ -18,7 +19,7 @@ namespace MediaImporter.Framework
             get
             {
                 return
-                    _inputLocations ?? (_inputLocations = ConfigurationManager.AppSettings["InputLocations"].Split('|'));
+                    _inputLocations ?? (_inputLocations = ConfigurationManager.AppSettings["InputLocations"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -28,7 +29,7 @@ namespace MediaImporter.Framework
             {
                 return
                     _imageExtensions ??
-                    (_imageExtensions = ConfigurationManager.AppSettings["ImageExtensions"].Split('|'));
+                    (_imageExtensions = ConfigurationManager.AppSettings["ImageExtensions"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -38,7 +39,7 @@ namespace MediaImporter.Framework
             {
                 return
                     _videoExtensions ??
-                    (_videoExtensions = ConfigurationManager.AppSettings["VideoExtensions"].Split('|'));
+                    (_videoExtensions = ConfigurationManager.AppSettings["VideoExtensions"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -48,7 +49,7 @@ namespace MediaImporter.Framework
             {
                 return
                     _ignoredExtensions ??
-                    (_ignoredExtensions = ConfigurationManager.AppSettings["IgnoredExtensions"].Split('|'));
+                    (_ignoredExtensions = ConfigurationManager.AppSettings["IgnoredExtensions"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -64,7 +65,7 @@ namespace MediaImporter.Framework
                 return
                     _secondaryImageOutputLocations ??
                     (_secondaryImageOutputLocations =
-                     ConfigurationManager.AppSettings["SecondaryImageOutputLocations"].Split('|'));
+                     ConfigurationManager.AppSettings["SecondaryImageOutputLocations"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -80,7 +81,7 @@ namespace MediaImporter.Framework
                 return
                     _secondaryVideoOutputLocations ??
                     (_secondaryVideoOutputLocations =
-                     ConfigurationManager.AppSettings["SecondaryVideoOutputLocations"].Split('|'));
+                     ConfigurationManager.AppSettings["SecondaryVideoOutputLocations"].Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries));
             }
         }
 
@@ -91,7 +92,7 @@ namespace MediaImporter.Framework
                 return
                     _unknownFileOutputLocations ??
                     (_unknownFileOutputLocations =
-                     ConfigurationManager.AppSettings["UnknownFileOutputLocations"].Split('|'));
+                     ConfigurationManager.AppSettings["UnknownFileOutputLocations"].Split(new[] { '|'}, StringSplitOptions.RemoveEmptyEntries));
             }
         }
     }
